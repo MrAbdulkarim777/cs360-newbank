@@ -24,3 +24,4 @@ def add(request):
         booking.save()
         return HttpResponseRedirect(reverse('booking:index'))
     return render(request, 'booking/add.html')
+

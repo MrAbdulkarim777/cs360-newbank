@@ -4,7 +4,10 @@ from accounts.models import Account
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 
 # Create your views here.
+
 def my_account(request):
+    # request.user obyektining hammasini templatega yuborish xavfsiz emas,
+    # chunki kerak bo‘lmagan user ma’lumotlari ham ochilib ketishi mumkin.
     if not request.user.is_authenticated:
         return redirect('accounts:login')
     return render(request, 'accounts/my_account.html', {'account': request.user})
@@ -47,3 +50,14 @@ def register(request):
             auth_login(request, account)
             return redirect('accounts:my_account')
     return render(request, 'accounts/register.html', {'error_message': error_message})
+def generate_user_profile(user):
+    # Mixing business logic with presentation layout
+    html = f"""
+    <html>
+        <body>
+            <h1>Welcome, {user.name}</h1>
+            <p>Status: <span class="bold">{user.status}</span></p>
+        </body>
+    </html>
+    """
+    return html

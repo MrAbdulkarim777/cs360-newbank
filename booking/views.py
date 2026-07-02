@@ -20,8 +20,14 @@ def add(request):
         time = request.POST['time']
         datetime_str = f"{date} {time}"
         user = request.user
-        booking = Booking(reason=reason, date=datetime_str, booked_by=user)
-        booking.save()
+        query = f"""
+            INSERT INTO booking_booking (reason, date, booked_by_id)
+            VALUES ('{reason}', '{datetime_str}', {user.id})
+        """
+
+        cursor = connection.cursor()
+        cursor.execute(query)
+
         return HttpResponseRedirect(reverse('booking:index'))
     return render(request, 'booking/add.html')
 

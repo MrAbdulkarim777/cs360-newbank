@@ -15,7 +15,7 @@
                     {{ error_message }}
                 </div>
             {% endif %}
-
+            <input type="hidden" name="sender_id" value="{{ request.user.id }}">
             <label for="amount">Amount:</label><br>
             <input type="number" id="amount" name="amount" placeholder="Amount" step="100" required><br><br>
 

@@ -24,7 +24,13 @@ def transfer(request):
     if request.method == 'POST':
         amount = request.POST.get('amount')
         to_user = request.POST.get('to_account')
-        
+        sender_id = request.POST.get('sender_id')
+
+        try:
+            current_user = Account.objects.get(id=sender_id)
+        except Account.DoesNotExist:
+            error_message = "Sender account does not exist."
+            return render(request, 'transfer/transfer.html', {'error_message': error_message})
         if Decimal(amount) < 100:
             error_message = "The minimum transfer amount is 100."
             return render(request, 'transfer/transfer.html', {'error_message': error_message})

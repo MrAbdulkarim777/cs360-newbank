@@ -23,7 +23,7 @@ def login(request):
         if user:
             auth_login(request, user)
             return redirect('accounts:my_account')
-        error_message = 'Invalid username or password'
+        error_message = 'Invalid  password'
     return render(request, 'accounts/login.html', {'error_message': error_message})
 
 def logout(request):

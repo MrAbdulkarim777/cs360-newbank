@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency</title>
+</head>
+<body>
+    <h1>Currency Rates</h1>
+
+    {% for currency, rate in currency_data.items %}
+        <p>{{ currency }}: {{ rate }}</p>
+    {% endfor %}
+</body>
+</html>

@@ -20,7 +20,6 @@ class CardDetailTests(TestCase):
 
 class CurrencyViewTDDTests(TestCase):
 
-
     def test_currency_view_contains_uzs(self):
         response = self.client.get('/currency/')
         self.assertEqual(response.status_code, 200)

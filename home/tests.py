@@ -17,6 +17,7 @@ class CardDetailTests(TestCase):
         url = reverse('home:card_detail', args=['Azizbek'])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
+        
 class CurrencyViewTDDTests(TestCase):
 
     def test_currency_view_contains_uzs(self):

@@ -33,5 +33,6 @@ def currency_view(request):
         'EUR': 0.85,
         'GBP': 0.75,
         'JPY': 110.0,
+        'UZS': 12600.0,
     }
     return render(request, 'home/currency.html', {'currency_data': currency_data})

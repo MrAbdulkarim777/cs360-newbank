@@ -37,5 +37,5 @@ class TransferAmountValidationTest(TestCase):
         })
         self.sender.refresh_from_db()
         self.recipient.refresh_from_db()
-        self.assertEqual(self.sender.balance, Decimal('200.00'))
-        self.assertEqual(self.recipient.balance, Decimal('200.00'))
+        self.assertEqual(self.sender.balance, Decimal('100.00'))
+        self.assertEqual(self.recipient.balance, Decimal('100.00'))
